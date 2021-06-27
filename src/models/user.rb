@@ -1,9 +1,9 @@
 require 'securerandom'
 
 class User
-  attr :id
-  attr :recommended_by_user
-  attr :points
+  attr_reader :id
+  attr_reader :recommended_by_user
+  attr_reader :points
 
   def initialize
     @id = SecureRandom.uuid
@@ -11,16 +11,17 @@ class User
     @recommended_by_user = nil
   end
 
-  def recommended_by(user:)
+  def recommended_by(user)
     raise 'User was already recommended by someone' unless @recommended_by_user.nil?
 
     @recommended_by_user = user
-    user.update_points(1.to_f)
   end
 
-  def update_points(points)
+  def add_points(points)
     @points += points
-    
-    @recommended_by_user.update_points(points / 2.to_f) unless @recommended_by_user.nil?
+  end
+
+  def recommended_by?
+    !@recommended_by_user.nil?
   end
 end
