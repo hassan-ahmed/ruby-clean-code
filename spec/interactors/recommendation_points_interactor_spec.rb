@@ -1,8 +1,13 @@
 require 'minitest/autorun'
 require 'minitest/spec'
 require_relative '../../src/interactors/recommendation_points_interactor'
+require_relative '../../src/models/base_model'
 
 describe RecommendationPointsInteractor do
+  after do
+    BaseModel.clear
+  end
+
   it "should initialize recommendation points interactor with corrrect inputs" do
     user = User.new
 

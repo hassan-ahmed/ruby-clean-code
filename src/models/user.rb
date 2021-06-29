@@ -1,14 +1,15 @@
 require 'securerandom'
+require_relative './base_model'
 
-class User
-  attr_reader :id
+class User < BaseModel
+  attr_reader :user_name
   attr_reader :recommended_by_user
   attr_reader :points
 
-  def initialize
-    @id = SecureRandom.uuid
-    @points = 0
+  def initialize(params = {})
     @recommended_by_user = nil
+    @points = 0
+    super(params)
   end
 
   def recommended_by(user)
@@ -23,5 +24,11 @@ class User
 
   def recommended_by?
     !@recommended_by_user.nil?
+  end
+
+  def unique?
+    entry = self.class
+      .find_by('user_name', @user_name)
+    entry.nil?
   end
 end

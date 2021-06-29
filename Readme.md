@@ -1,1 +1,1 @@
-run test by `rake test`
+run tests by `rake test`
