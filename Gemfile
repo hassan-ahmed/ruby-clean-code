@@ -1,4 +1,5 @@
 # Gemfile
 source "https://rubygems.org"
 
-gem "minitest"
+gem 'minitest'
+gem 'sinatra'
