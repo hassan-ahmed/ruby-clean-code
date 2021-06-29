@@ -4,6 +4,7 @@ require_relative './base_model'
 class PendingRecommendation < BaseModel
   attr_reader :recommended_by_user_name
   attr_reader :recommended_user_name
+  attr_reader :date_time
 
   def unique?
     entry = self.class

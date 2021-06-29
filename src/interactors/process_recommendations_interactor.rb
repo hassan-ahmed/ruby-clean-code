@@ -13,7 +13,8 @@ class ProcessRecommendationsInteractor
         if row.action == 'recommends'
           AddRecommendationInteractor.new(
             recommended_by_user_name: row.user,
-            recommended_user_name: row.recommended_user
+            recommended_user_name: row.recommended_user,
+            date_time: row.date_time
           )
         elsif row.action == 'accepts'
           AcceptRecommendationInteractor.new(

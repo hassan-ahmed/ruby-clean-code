@@ -11,7 +11,8 @@ describe AddRecommendationInteractor do
   it "should initialize recommendation interactor with corrrect inputs" do
     recommendation = AddRecommendationInteractor.new(
       recommended_user_name: 'A',
-      recommended_by_user_name: 'B'
+      recommended_by_user_name: 'B',
+      date_time: '2018-06-23 09:41'
     )
 
     expect(recommendation).must_be_kind_of(AddRecommendationInteractor)

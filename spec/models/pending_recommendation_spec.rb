@@ -10,7 +10,8 @@ describe PendingRecommendation do
   it "should initialize a new pending recommendation with corrrect params" do
     pending_recommendation = PendingRecommendation.new(
       recommended_by_user_name: 'A',
-      recommended_user_name: 'B'
+      recommended_user_name: 'B',
+      date_time: '2018-06-25 09:41'
     )
 
     expect(pending_recommendation).must_be_kind_of(PendingRecommendation)
@@ -19,7 +20,8 @@ describe PendingRecommendation do
   it "should save a pending recommendation with corrrect params" do
     res = PendingRecommendation.new(
       recommended_by_user_name: 'A',
-      recommended_user_name: 'B'
+      recommended_user_name: 'B',
+      date_time: '2018-06-25 09:41'
     ).save
 
     expect(res).must_equal(true)
@@ -28,14 +30,16 @@ describe PendingRecommendation do
   it "should not save a duplicate pending recommendation" do
     res1 = PendingRecommendation.new(
       recommended_by_user_name: 'A',
-      recommended_user_name: 'B'
+      recommended_user_name: 'B',
+      date_time: '2018-06-25 09:41'
     ).save
     
     expect(res1).must_equal(true)
 
     res2 = PendingRecommendation.new(
       recommended_by_user_name: 'A',
-      recommended_user_name: 'B'
+      recommended_user_name: 'B',
+      date_time: '2018-06-25 09:41'
     ).save
 
     expect(res2).must_equal(false)
@@ -44,7 +48,8 @@ describe PendingRecommendation do
   it "should find a pending recommendation with corrrect params" do
     res1 = PendingRecommendation.new(
       recommended_by_user_name: 'A',
-      recommended_user_name: 'B'
+      recommended_user_name: 'B',
+      date_time: '2018-06-25 09:41'
     ).save
 
     expect(res1).must_equal(true)
@@ -58,11 +63,13 @@ describe PendingRecommendation do
   it "should not return a pending recommendation with incorrect params" do
     PendingRecommendation.new(
       recommended_by_user_name: 'A',
-      recommended_user_name: 'B'
+      recommended_user_name: 'B',
+      date_time: '2018-06-25 09:41'
     ).save
     PendingRecommendation.new(
       recommended_by_user_name: 'A',
-      recommended_user_name: 'C'
+      recommended_user_name: 'C',
+      date_time: '2018-06-25 09:41'
     ).save
 
     pending_recommendation = PendingRecommendation.find_by('recommended_user_name', 'D')
@@ -73,7 +80,8 @@ describe PendingRecommendation do
   it "should destroy a pending recommendation with corrrect params" do
     PendingRecommendation.new(
       recommended_by_user_name: 'A',
-      recommended_user_name: 'B'
+      recommended_user_name: 'B',
+      date_time: '2018-06-25 09:41'
     ).save
 
     pending_recommendation = PendingRecommendation.find_by('recommended_user_name', 'B')
